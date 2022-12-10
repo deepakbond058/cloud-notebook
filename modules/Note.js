@@ -24,12 +24,6 @@ const NoteSchema = new Schema({
     default:Date.now
   }
 });
-
-mongoose.connect(
-  process.env.REACT_APP_NOT_MONGO_URI,
-  (err) => {
-   if(err) console.log(err) 
-   else console.log("mongdb is connected");
-});
-const Note =  mongoose.model("note",NoteSchema);
-module.exports = Note;
+  mongoose.connect(process.env.REACT_APP_NOT_MONGO_URI);
+  const Note =  mongoose.model("note",NoteSchema);
+  module.exports = Note;

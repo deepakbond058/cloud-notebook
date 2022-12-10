@@ -4,6 +4,9 @@ const router = express.Router();
 const Note = require("../modules/Note");
 const { body, validationResult } = require('express-validator');
 
+
+
+
 //Route 1 :GET request to fetch all notes of the user http://localhost:5000/api/note/fetchallnotes
 router.get("/fetchnotes", fetchuser, async (req, res) => {
     try {

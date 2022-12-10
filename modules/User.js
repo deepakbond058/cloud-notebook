@@ -21,11 +21,6 @@ const UserSchema = new Schema({
     default:Date.now
   }
 });
-mongoose.connect(
-  process.env.REACT_APP_NOT_MONGO_URI,
-  (err) => {
-   if(err) console.log(err) 
-   else console.log("mongdb is connected");
-});
+mongoose.connect(process.env.REACT_APP_NOT_MONGO_URI);
 const User= mongoose.model("user",UserSchema);
 module.exports =User; 

@@ -21,6 +21,7 @@ router.post("/createuser", [
             return res.status(400).json({ success,errors: errors.array() });
         }
         try {
+            
             //fetching the matching email from mongoDB with mongoose 
             let user = await User.findOne({ email: req.body.email });
             if (user) {
