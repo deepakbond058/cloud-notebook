@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-import connectToMongo from '../db';
-// import mongoose from 'mongoose';
+require('dotenv').config()
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
@@ -22,6 +21,11 @@ const UserSchema = new Schema({
     default:Date.now
   }
 });
-connectToMongo();
+mongoose.connect(
+  process.env.REACT_APP_NOT_MONGO_URI,
+  (err) => {
+   if(err) console.log(err) 
+   else console.log("mongdb is connected");
+});
 const User= mongoose.model("user",UserSchema);
 module.exports =User; 
