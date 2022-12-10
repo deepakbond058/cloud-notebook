@@ -1,5 +1,6 @@
 const connectToMongo = require("./db");
-connectToMongo();
+const mongoose =require('mongoose');
+mongoose.connect( process.env.REACT_APP_NOT_MONGO_URI); 
 const express = require('express')
 const cors = require('cors')
 const app = express()
