@@ -10,5 +10,5 @@ const connectToMongo= mongoose.connect(
      else console.log("mongdb is connected");
     }
   );
-
+cs
 module.exports = connectToMongo;
