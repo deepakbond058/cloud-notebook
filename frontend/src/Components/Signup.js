@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useNavigate,Link } from 'react-router-dom';
 import noteContext from './Context/NoteContext'
 import logo from "./mainlogo.png";
+import axios from 'axios';
 
 function Signup() {
   const navigate = useNavigate();
@@ -15,23 +16,25 @@ function Signup() {
       showAlert("warning", "Passwords do not match, Please try again");
       setcreds({name:creds.name,email:creds.email,password:"",cpassword:""});
     } else {
-      const url = `http://localhost:5000/api/auth/createuser`
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({name:creds.name,email:creds.email,password:creds.password})
-      });
-      const json = await response.json();
-      if (json.success) {
-        //save token and redirect 
-        localStorage.setItem('authtoken', json.jsnToken);
-        navigate("/");
-        showAlert('thumbs-up','Success','Your Account has been created successfully')
-      } else {
-        showAlert("circle-exclamation",'Warning', 'A user already exists with this email');
-      }
+      try {
+        const response = await axios({
+          method: 'post',
+          url: "api/auth/createuser",
+          headers: {
+            'Content-Type': 'application/json'   
+          },
+          data: JSON.stringify({name:creds.name,email:creds.email,password:creds.password})
+        })
+            const json = await response.data;
+            if (response.status===200) {
+              //save token and redirect 
+              localStorage.setItem('authtoken', json.jsnToken);
+              navigate("/");
+              showAlert('thumbs-up','Success','Your Account has been created successfully')
+            } 
+      } catch (error) {
+        showAlert("circle-exclamation",'Warning',error.response.data.error);
+      }  
     }
   }
 

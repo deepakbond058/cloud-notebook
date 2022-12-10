@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.1308c0f3.css","mappings":"AAAA,EAGE,aAAwB,CAFxB,cAAe,CACf,gBAEF","sources":["index.css"],"sourcesContent":["i{\n  cursor: pointer;\n  font-size: 1.5rem;\n  color: rgb(221, 176, 28);\n}"],"names":[],"sourceRoot":""}
