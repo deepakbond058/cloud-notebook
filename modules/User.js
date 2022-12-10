@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+import connectToMongo from '../db';
 // import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
@@ -21,6 +22,6 @@ const UserSchema = new Schema({
     default:Date.now
   }
 });
-mongoose.connect( process.env.REACT_APP_NOT_MONGO_URI);
+connectToMongo();
 const User= mongoose.model("user",UserSchema);
 module.exports =User; 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-reui
+const connectToMongo = require('../db');
 // import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
@@ -25,6 +25,6 @@ const NoteSchema = new Schema({
     default:Date.now
   }
 });
-mongoose.connect( process.env.REACT_APP_NOT_MONGO_URI);
+connectToMongo();
 const Note =  mongoose.model("note",NoteSchema);
 module.exports = Note;
