@@ -8,7 +8,5 @@ const connectToMongo= mongoose.connect(
     (err) => {
      if(err) console.log(err) 
      else console.log("mongdb is connected");
-    }
-  );
-cs
+    });
 module.exports = connectToMongo;
