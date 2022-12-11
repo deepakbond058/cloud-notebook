@@ -13,7 +13,7 @@ function Signup() {
   const onSumbit = async (e) => {
     e.preventDefault();
     if (creds.password !== creds.cpassword) {
-      showAlert("warning", "Passwords do not match, Please try again");
+      showAlert("circle-exclamation","Warning", "Passwords do not match, Please try again");
       setcreds({name:creds.name,email:creds.email,password:"",cpassword:""});
     } else {
       try {

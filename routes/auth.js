@@ -39,9 +39,9 @@ router.post("/createuser", [
                     id: user.id
                 }
             }
-            console.log(data.user);
+        
             const jsnToken = jwt.sign(data, JWT_SECRET);
-            console.log(jsnToken);
+        
             success=true;
             res.send({ success,jsnToken })
         } catch (error) {
@@ -65,7 +65,7 @@ router.post("/login", [
 
         try {
             const { email, password } = req.body;
-            console.log(email);
+          
             const user = await User.findOne({ email });
             if (!user) {
                 return res.status(400).json({ success,error: "user not found" });

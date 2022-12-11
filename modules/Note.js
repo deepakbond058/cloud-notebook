@@ -24,6 +24,6 @@ const NoteSchema = new Schema({
     default:Date.now
   }
 });
-  mongoose.connect(process.env.REACT_APP_NOT_MONGO_URI);
+  // mongoose.connect(process.env.REACT_APP_NOT_MONGO_URI);
   const Note =  mongoose.model("note",NoteSchema);
   module.exports = Note;
